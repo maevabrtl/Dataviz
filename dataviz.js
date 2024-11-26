@@ -32,3 +32,13 @@ function incrementSeconds() {
 }
 
 setInterval(incrementSeconds, 1000) 
+
+
+
+// Exemple : Redémarrer l'animation en cliquant sur la page
+document.body.addEventListener('click', () => {
+  const water = document.querySelector('.coloredWater');
+  water.style.animation = 'none'; // Réinitialise l'animation
+  void water.offsetWidth; // Force le recalcul de l'élément
+  water.style.animation = 'fillWater 5s ease-in-out forwards'; // Redémarre l'animation
+});

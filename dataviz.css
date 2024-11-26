@@ -5,6 +5,7 @@
 }
 
 #actualTime, Seconds{
+z-index: 1;
 text-align: center;
 padding-top: 300px;
 padding-left: 10px;
@@ -23,7 +24,7 @@ body{
 
 /* HTML: <div class="loader"></div> */
 .loader {
-   
+    z-index: 1;
     width: 60px;
     aspect-ratio: 4;
     --c:#ffffff 90%,#ffffff00;
@@ -39,4 +40,24 @@ body{
   
   @keyframes l4 {
       to{width:25px;aspect-ratio: 1}
+  }
+
+
+
+   /* L'eau */
+   .coloredWater {
+    position: absolute;
+    bottom: -100%; /* L'eau commence en bas, en dehors de la vue */
+    width: 100%;
+    height: 100%;
+   background: rgb(131,58,180);
+background: linear-gradient(0deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 46%, rgba(252,176,69,1) 100%);
+    animation: fillWater 5s ease-in-out forwards;
+  }
+  
+  /* Animation de remplissage */
+  @keyframes fillWater {
+    to {
+      bottom: 0; /* L'eau remplit l'écran entier */
+    }
   }

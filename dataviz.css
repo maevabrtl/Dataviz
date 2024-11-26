@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Pour inclure les paddings et bordures dans la taille des éléments */
+}
+
+#actualTime, Seconds{
+text-align: center;
+padding-top: 300px;
+padding-left: 10px;
+padding-bottom: 50px;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-style: bold;
+color: rgb(255, 255, 255);
+font-size: 40px;
+letter-spacing: 20px;
+}
+
+body{
+    background-color: rgb(0, 0, 0);
+    display:grid;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+   
+    width: 60px;
+    aspect-ratio: 4;
+    --c:#ffffff 90%,#ffffff00;
+    background: 
+      radial-gradient(circle closest-side at left  6px top 50%,var(--c)),
+      radial-gradient(circle closest-side                     ,var(--c)),
+      radial-gradient(circle closest-side at right 6px top 50%,var(--c));
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    animation: l4 1s infinite alternate;
+    justify-self: center;
+  }
+  
+  @keyframes l4 {
+      to{width:25px;aspect-ratio: 1}
+  }

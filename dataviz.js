@@ -29,16 +29,34 @@ function incrementSeconds() {
   const formattedTime = `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
   
   document.getElementById('actualTime').innerHTML = formattedTime; // Afficher l'heure mise à jour
+
+  waterGradient();
 }
 
 setInterval(incrementSeconds, 1000) 
 
 
 
-// Exemple : Redémarrer l'animation en cliquant sur la page
+/* // Exemple : Redémarrer l'animation en cliquant sur la page
 document.body.addEventListener('click', () => {
   const water = document.querySelector('.coloredWater');
   water.style.animation = 'none'; // Réinitialise l'animation
   void water.offsetWidth; // Force le recalcul de l'élément
   water.style.animation = 'fillWater 5s ease-in-out forwards'; // Redémarre l'animation
-});
+}); */
+
+function waterGradient(){
+/*   interval = setInterval(() => {
+    if (seconds <= 0 || seconds == 59 ) {
+      clearInterval(interval);
+    }
+  },1000) */
+  if (seconds <= 0 /* || seconds == 59 */) {
+    const water = document.querySelector('.coloredWater');
+    water.style.animation = 'none'; // Réinitialise l'animation
+    void water.offsetWidth; // Force le recalcul de l'élément
+    water.style.animation = 'fillWater 60s ease-in-out forwards';
+  }
+}
+
+waterGradient();

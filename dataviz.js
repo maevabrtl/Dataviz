@@ -1,62 +1,49 @@
-// l'heure actuelle
-let currentDate = new Date();
-let hours = currentDate.getHours();
-let minutes = currentDate.getMinutes();
-let seconds = currentDate.getSeconds();
+function waterGradient() {
+  const water = document.querySelector('.coloredWater');
+  const elapsedSeconds = seconds;            //permet de calculer le temps déja passé
+  const remainingTime = 60 - elapsedSeconds;
+  water.style.animation = `none`;  //commence l'animation
+  void water.offsetWidth; 
+  
+  water.style.animation = `fillWater ${remainingTime}s ease-in-out forwards`; //l'animation réagit selon les secondes passées
+}
+
 
 function incrementSeconds() {
-  
   seconds++;
 
-  // Depassement des secondes (60 secondes = 1 minute)
   if (seconds === 60) {
     seconds = 0;
     minutes++;
+    waterGradient(); 
   }
 
-  // Depassement des minutes (60 minutes = 1 heure)
   if (minutes === 60) {
     minutes = 0;
     hours++;
   }
 
-  // Dépassement des heures (24 heures = 1 jour)
   if (hours === 24) {
     hours = 0;
   }
 
-  // Formater les heures, minutes et secondes pour avoir 2 chiffres
   const formattedTime = `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
   
-  document.getElementById('actualTime').innerHTML = formattedTime; // Afficher l'heure mise à jour
-
-  waterGradient();
+  document.getElementById('actualTime').innerHTML = formattedTime; 
 }
 
-setInterval(incrementSeconds, 1000) 
 
+function initializeClock() {        //FONCTION POUR SYNCHRONISER L'ANIMAtION AVEC LES SECONDES
+  const currentDate = new Date();
+  hours = currentDate.getHours();
+  minutes = currentDate.getMinutes();
+  seconds = currentDate.getSeconds();
 
+  const formattedTime = `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  document.getElementById('actualTime').innerHTML = formattedTime;
 
-/* // Exemple : Redémarrer l'animation en cliquant sur la page
-document.body.addEventListener('click', () => {
-  const water = document.querySelector('.coloredWater');
-  water.style.animation = 'none'; // Réinitialise l'animation
-  void water.offsetWidth; // Force le recalcul de l'élément
-  water.style.animation = 'fillWater 5s ease-in-out forwards'; // Redémarre l'animation
-}); */
-
-function waterGradient(){
-/*   interval = setInterval(() => {
-    if (seconds <= 0 || seconds == 59 ) {
-      clearInterval(interval);
-    }
-  },1000) */
-  if (seconds <= 0 /* || seconds == 59 */) {
-    const water = document.querySelector('.coloredWater');
-    water.style.animation = 'none'; // Réinitialise l'animation
-    void water.offsetWidth; // Force le recalcul de l'élément
-    water.style.animation = 'fillWater 60s ease-in-out forwards';
-  }
+  waterGradient(); 
 }
 
-waterGradient();
+initializeClock();
+setInterval(incrementSeconds, 1000);

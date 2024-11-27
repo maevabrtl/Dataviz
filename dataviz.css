@@ -1,11 +1,11 @@
 * {
-    margin: 0;
+    margin: 0;    /*pour supprimer les marges du navigateur, idem pour padding*/
     padding: 0;
     box-sizing: border-box; /* Pour inclure les paddings et bordures dans la taille des éléments */
 }
 
 #actualTime, Seconds{
-z-index: 1;
+z-index: 1;  /*pour signaler les position (arriere plan (-1); (premier plan (1 ou +))*/
 text-align: center;
 padding-top: 300px;
 padding-left: 10px;
@@ -19,10 +19,9 @@ letter-spacing: 20px;
 
 body{
     background-color: rgb(0, 0, 0);
-    display:grid;
-    overflow: hidden;
+    display:grid;   /*selon navigateur pour que le justify-self: center  de loader soit pris en compte (à mettre dans le dossier parent)*/
+    overflow: hidden;  /*pour cacher ce qui depasse de la page*/
 }
-
 /* HTML: <div class="loader"></div> */
 .loader {
     z-index: 1;
@@ -40,7 +39,7 @@ body{
     
   }
   
-  @keyframes l4 {
+  @keyframes l4 {  
       to{width:25px;aspect-ratio: 1}
   }
 
@@ -49,15 +48,23 @@ body{
    /* L'eau */
    .coloredWater {
     position: absolute;
-    bottom: -100%; /* L'eau commence en bas, en dehors de la vue */
+    bottom:-100%; /* L'eau commence en bas, en dehors de la vue */
     width: 100%;
     height: 100%;
    background: rgb(131,58,180);
 background: linear-gradient(0deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 46%, rgba(252,176,69,1) 100%);
     animation: none/* fillWater 60s ease-in-out forwards */;
     overflow: hidden;
+     --mask:
+        radial-gradient(48.02px at 50% 67.5px,#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%,
+        radial-gradient(48.02px at 50% -37.5px,#0000 99%,#000 101%) 50% 30px/120px 100% repeat-x;
+      -webkit-mask: var(--mask);
+              mask: var(--mask);
+    }
+    
   
-  }
+
+  
   
   /* Animation de remplissage */
   @keyframes fillWater {
@@ -65,4 +72,6 @@ background: linear-gradient(0deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 46%, 
       bottom: 0; /* L'eau remplit l'écran entier */
     }
   }
+
+  
   
